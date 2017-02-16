@@ -1,10 +1,10 @@
 
 N = 50; %number of banks
 alpha = 1;
-monetaryReserves = 10000*ones(N,1);
+monetaryReserves = 1000*ones(N,1);
 dtMonetaryReserves = zeros(N,1);
-sigma = 1000;
-maxTime = 10000;
+sigma = 100;
+maxTime = 1000;
 dt = 1/maxTime;
 percentChange = 0.01;
 for t = 1:maxTime
