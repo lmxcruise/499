@@ -1,5 +1,5 @@
 %Graph theory version
-N = 3; %number of banks
+N = 10; %number of banks
 alpha = 1;
 monetaryReserves = 1000*ones(N,1);
 dtMonetaryReserves = zeros(N,1);

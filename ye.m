@@ -4,7 +4,7 @@ alpha = 1;
 monetaryReserves = 1000*ones(N,1);
 dtMonetaryReserves = zeros(N,1);
 sigma = 1;
-maxTime = 100;
+maxTime = 100; %252 time step # of trading days in a year
 dt = 1/maxTime;
 
 for t = 1:maxTime
