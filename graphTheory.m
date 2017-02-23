@@ -1,10 +1,11 @@
 %Graph theory version
+clear;
 N = 10; %number of banks
 alpha = 1;
 monetaryReserves = 1000*ones(N,1);
 dtMonetaryReserves = zeros(N,1);
 sigma = 1;
-maxTime = 100;
+maxTime = 252;
 dt = 1/maxTime;
 d = zeros(N,1); % The diagonal values
 t = triu(round(rand(N)), 1); % The upper trianglar random values
