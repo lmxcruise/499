@@ -1,7 +1,6 @@
 Changing Alpha Other Parameters
 
 numBanks = 10; %number of banks
-alpha = 0;
 sigma = 10;
 numIterations = 10000;
 maxTime = 252; %252 time step # of trading days in a year

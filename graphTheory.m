@@ -1,8 +1,7 @@
 %Graph theory version
-clear;
 numBanks = 10; %number of banks
-alpha = 1;
-sigma = 15;
+alpha = 100;
+sigma = 10;
 numIterations = 10000;
 maxTime = 252; %252 time step # of trading days in a year
 dt = 1/maxTime;
@@ -13,16 +12,16 @@ realizationReserves = zeros(numBanks, maxTime);
 numDefault = zeros(numBanks+1,1);
 numFailed = zeros(numIterations,1);
 % Spoke(edges not connected) 3 center points
-% a = [   0 1 1 0 0 0 0 0 1 1;
-%         1 0 0 0 0 0 1 1 0 1;
-%         1 0 0 0 0 0 0 0 0 0;
-%         0 0 0 0 0 0 0 0 0 1;
-%         0 0 0 0 0 0 0 0 0 1;
-%         0 0 0 0 0 0 0 0 0 1;
-%         0 1 0 0 0 0 0 0 0 0;
-%         0 1 0 0 0 0 0 0 0 0;
-%         1 0 0 0 0 0 0 0 0 0;
-%         1 1 0 1 1 1 0 0 0 0 ];  
+a = [   0 1 1 0 0 0 0 0 1 1;
+        1 0 0 0 0 0 1 1 0 1;
+        1 0 0 0 0 0 0 0 0 0;
+        0 0 0 0 0 0 0 0 0 1;
+        0 0 0 0 0 0 0 0 0 1;
+        0 0 0 0 0 0 0 0 0 1;
+        0 1 0 0 0 0 0 0 0 0;
+        0 1 0 0 0 0 0 0 0 0;
+        1 0 0 0 0 0 0 0 0 0;
+        1 1 0 1 1 1 0 0 0 0 ];  
         
 % Spoke 1 center
 % a = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1; 
@@ -37,16 +36,16 @@ numFailed = zeros(numIterations,1);
 %     1, 0, 0, 0, 0, 0, 0, 0, 0, 0]; 
 
 % wheel and spoke 1 center
-a = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1; 
-    1, 0, 1, 0, 0, 0, 0, 0, 0, 1;
-    1, 1, 0, 1, 0, 0, 0, 0, 0, 0; 
-    1, 0, 1, 0, 1, 0, 0, 0, 0, 0; 
-    1, 0, 0, 1, 0, 1, 0, 0, 0, 0; 
-    1, 0, 0, 0, 1, 0, 1, 0, 0, 0; 
-    1, 0, 0, 0, 0, 1, 0, 1, 0, 0; 
-    1, 0, 0, 0, 0, 0, 1, 0, 1, 0; 
-    1, 0, 0, 0, 0, 0, 0, 1, 0, 1; 
-    1, 1, 0, 0, 0, 0, 0, 0, 1, 0 ];
+% a = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1; 
+%     1, 0, 1, 0, 0, 0, 0, 0, 0, 1;
+%     1, 1, 0, 1, 0, 0, 0, 0, 0, 0; 
+%     1, 0, 1, 0, 1, 0, 0, 0, 0, 0; 
+%     1, 0, 0, 1, 0, 1, 0, 0, 0, 0; 
+%     1, 0, 0, 0, 1, 0, 1, 0, 0, 0; 
+%     1, 0, 0, 0, 0, 1, 0, 1, 0, 0; 
+%     1, 0, 0, 0, 0, 0, 1, 0, 1, 0; 
+%     1, 0, 0, 0, 0, 0, 0, 1, 0, 1; 
+%     1, 1, 0, 0, 0, 0, 0, 0, 1, 0 ];
 
 
      
@@ -91,3 +90,13 @@ plot(numDefault/numIterations);
 title(['Alpha = ', num2str(alpha)]);
 xlabel('Number of Default');
 % xlim([0 numBanks])
+
+figure(2);
+for i =1:numBanks
+    plot(t,realizationReserves(i,:));
+    hold on;
+end;
+title(['Alpha = ', num2str(alpha), ' realization']);
+xlabel('Time');
+xlim([0 252]);
+% ylim([-3 3]);

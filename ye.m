@@ -1,7 +1,7 @@
 clear;
 numBanks = 10; %number of banks
 alpha = 100;
-sigma = 5;
+sigma = 10;
 numIterations = 10000;
 maxTime = 252; %252 time step # of trading days in a year
 dt = 1/maxTime;
@@ -40,26 +40,27 @@ for i = 1:numIterations
    numDefault(numFailed(i)+1) = numDefault(numFailed(i)+1) + 1;
 end;
 
-monetaryReserves
-plot(numDefault/numIterations);
-title(['Alpha = ', num2str(alpha)]);
-xlabel('Number of Default');
-% xlim([0 numBanks])
-numDefault
-
-
-
-% t = 1:maxTime;
+% monetaryReserves
 % figure(1);
+% plot(numDefault/numIterations);
+% title(['Sigma = ', num2str(sigma), ' and Alpha = ', num2str(alpha)]);
+% xlabel('Number of Default');
+% % xlim([0 numBanks])
+% numDefault
+
+
+% 
+t = 1:maxTime;
+figure(2);
 
 
 % A realization of bank reserves
-% for i =1:N
-%     plot(t,realizationReserves(i,:));
-%     hold on;
-% end;
-% title(['Alpha = ', num2str(alpha), ' realization']);
-% xlabel('Time');
-% xlim([0 252]);
-% ylim([-3 3]);
+for i =1:numBanks
+    plot(t,realizationReserves(i,:));
+    hold on;
+end;
+title(['Alpha = ', num2str(alpha), ' realization']);
+xlabel('Time');
+xlim([0 252]);
+ylim([-10 10]);
 
